@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Bienvenido
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid >
+    <ion-row >
+      <ion-col >
+        <ion-button [routerLink]="['/register']" expand="block" color="primary">Register</ion-button>
+          <ion-item-divider>         
+          </ion-item-divider>
+        <ion-button [routerLink]="['/login']" expand="block" color="danger">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
