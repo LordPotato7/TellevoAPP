@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'home-user',
     loadChildren: () => import('./user/home-user/home-user.module').then( m => m.HomeUserPageModule)
   },
+  {
+    path: 'home-p',
+    loadChildren: () => import('./pasajero/home-p/home-p.module').then( m => m.HomePPageModule)
+  },
+  {
+    path: 'home-c',
+    loadChildren: () => import('./conductor/home-c/home-c.module').then( m => m.HomeCPageModule)
+  },
 ];
 
 @NgModule({

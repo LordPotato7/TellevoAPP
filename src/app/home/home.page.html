@@ -1,5 +1,5 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="ion-text-center">
+<ion-header [translucent]="true" >
+  <ion-toolbar class="ion-text-center" color="tertiary">
     <ion-title>
       Te llevo App
     </ion-title>
@@ -7,8 +7,13 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="block" >
+  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" >
     <ion-icon slot="start" name="car"></ion-icon>
-    Viajar
+     Pasajero
+  </ion-button>
+
+  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" [routerLink]="['/home-c']">
+    <ion-icon slot="start" name="speedometer"></ion-icon>
+    Conductor
   </ion-button>
 </ion-content>
