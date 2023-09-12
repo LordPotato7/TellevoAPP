@@ -1,6 +1,6 @@
-<ion-header [translucent]="true" >
+<ion-header [translucent]="true">
   <ion-toolbar class="ion-text-center" color="tertiary">
-    
+
     <ion-title>
       Te llevo App
     </ion-title>
@@ -8,20 +8,22 @@
 </ion-header>
 
 <ion-content>
-  
+
   <ion-img src="./assets/icon/Auto_Promov.png"></ion-img>
   <ion-text color="black" class="ion-margin-horizontal">
-    <h5 class="ion-margin-horizontal">Necesitas viajar a Duoc o a tu casa desde el Duoc, entonces presiona el siguiente boton :</h5>
+    <h5 class="ion-margin-horizontal">Necesitas viajar a Duoc o a tu casa desde el Duoc, entonces presiona el siguiente
+      boton :</h5>
   </ion-text>
-  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" >
+  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" [routerLink]="['home-p']">
     <ion-icon slot="start" name="car"></ion-icon>
-     Pasajero
+    Pasajero
   </ion-button>
 
-  <ion-item-divider>         
+  <ion-item-divider>
   </ion-item-divider>
   <ion-text color="black" class="ion-margin-horizontal">
-    <h5 class="ion-margin-horizontal">Te dirijes hacia Duoc o Te vas a tu casa en tu auto y puedes llevar a mas gente? entonces presiona el siguiente boton:</h5>
+    <h5 class="ion-margin-horizontal">Te dirijes hacia Duoc o Te vas a tu casa en tu auto y puedes llevar a mas gente?
+      entonces presiona el siguiente boton:</h5>
   </ion-text>
   <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" [routerLink]="['/home-c']">
     <ion-icon slot="start" name="speedometer"></ion-icon>
@@ -31,7 +33,7 @@
 
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="library">
+    <ion-tab-button tab="library" >
       <ion-icon name="home"></ion-icon>
       Inicio
     </ion-tab-button>

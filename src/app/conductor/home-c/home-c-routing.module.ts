@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: HomeCPage
+  },  {
+    path: 'formulario',
+    loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
   }
+
 ];
 
 @NgModule({
