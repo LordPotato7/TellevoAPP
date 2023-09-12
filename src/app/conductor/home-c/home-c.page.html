@@ -8,8 +8,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" >
+  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" [routerLink]="['/crear-viaje']" >
     <ion-icon slot="start" name="car"></ion-icon>
      Crear viaje
+  </ion-button>
+
+  <ion-button color="secondary" expand="block" shape="round" class="ion-margin-top" [routerLink]="['/modificar-viaje']" >
+    <ion-icon slot="start" name="car"></ion-icon>
+     Modificar o Eliminar viaje
   </ion-button>
 </ion-content>
