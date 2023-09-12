@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChildren, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChildren, ViewChild} from '@angular/core';
 import type { QueryList } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import type { Animation } from '@ionic/angular';
 import { AnimationController, IonCard } from '@ionic/angular';
 
@@ -10,12 +11,22 @@ import { AnimationController, IonCard } from '@ionic/angular';
 })
 export class HomePage {
 
+  mensaje: string = "";
   @ViewChild(IonCard, { read: ElementRef })
   card!: ElementRef<HTMLIonCardElement>;
 
   private animation!: Animation;
 
-  constructor(private animationCtrl: AnimationController) {}
+  
+
+  constructor(private animationCtrl: AnimationController, private rutaActiva: ActivatedRoute) {
+
+    this.rutaActiva.queryParams.subscribe(params =>{
+      if(params['nombreUsuario']){
+        this.mensaje = params['nombreUsuario'];
+      }
+    })
+  }
 
   ngAfterViewInit() {
     this.animation = this.animationCtrl
