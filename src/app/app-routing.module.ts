@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'crear-viaje',
     loadChildren: () => import('./conductor/crear-viaje/crear-viaje.module').then( m => m.CrearViajePageModule)
+  },  {
+    path: 'historial-viaje',
+    loadChildren: () => import('./conductor/historial-viaje/historial-viaje.module').then( m => m.HistorialViajePageModule)
   },
+
   
 ];
 
