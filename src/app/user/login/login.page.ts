@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
+
 
 @Component({
   selector: 'app-login',
@@ -9,24 +11,27 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
   usuario={
-    username:'',
+    email:'',
     password:''
    }
   
     constructor(
       private router:Router,
-      private alertController:AlertController
+      private alertController:AlertController,
+      private storage: Storage
       ) { }
+      
   
     ngOnInit() {
     }
   
-    onSubmit()
+    async onSubmit()
     {
-      if (this.usuario.username=="shimuelo" && this.usuario.password=="1234"){
+      
+      if (this.usuario.email== await this.storage.get('email') && this.usuario.password== await this.storage.get('password')){
         let datosEnviar : NavigationExtras = {
           queryParams : {
-            nombreUsuario : this.usuario.username
+            nombreUsuario : await this.storage.get('nombre')
           }
         }
 
