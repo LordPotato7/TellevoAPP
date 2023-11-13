@@ -3,33 +3,74 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title class="ion-text-center">Log In</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <form #miFormulario="ngForm" (ngSubmit)="onSubmit()">
+<ion-content>
+  <div class="d-flex-center">
+    <form [formGroup]="form" (ngSubmit)="submit()" >
 
-    <ion-item >
-      <ion-input labelPlacement="floating" label="Nombre" type="text" name="nombre" [(ngModel)]="usuario.nombre" required></ion-input>
-    </ion-item>
+      <!--====================== nombre =================== -->
+      <app-custom-input 
+      icon="person-outline"
+      autocomplete="autocomplete"
+      [control]="form.controls.nombre"
+      type="text"
+      label="Nombre"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.nombre.errors && form.controls.nombre.touched" >
+        <div *ngIf="form.controls.nombre.errors?.['required']" >El nombre es requerido</div>
+        <div *ngIf="form.controls.nombre.errors?.['minlenght']" >el nombre debe tener al menos 3 carracteres</div>
+      </div>
 
-    <ion-item >
-      <ion-input labelPlacement="floating" label="Apellido" type="text" name="apellido" [(ngModel)]="usuario.apellido" required></ion-input>
-    </ion-item>
+      <!--====================== apellido =================== -->
+      <app-custom-input 
+      icon="person-outline"
+      autocomplete="autocomplete"
+      [control]="form.controls.apellido"
+      type="text"
+      label="Apellido"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.apellido.errors && form.controls.apellido.touched" >
+        <div *ngIf="form.controls.apellido.errors?.['required']" >El apellido es requerido</div>
+        <div *ngIf="form.controls.apellido.errors?.['minlenght']" >el apellido debe tener al menos 3 carracteres</div>
+      </div>
 
-    <ion-item >
-      <ion-input labelPlacement="floating" label="Email" required type="text" aria-label="Email" name="email" [(ngModel)]="usuario.email" ></ion-input>
-    </ion-item>
+      <!--====================== Email =================== -->
+      <app-custom-input 
+      icon="mail-outline"
+      autocomplete="autocomplete"
+      [control]="form.controls.email"
+      type="email"
+      label="Correo"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched" >
+        <div *ngIf="form.controls.email.errors?.['required']" >El correo es requerido</div>
+        <div *ngIf="form.controls.email.errors?.['email']" >ingrese un correo valido</div>
+      </div>
+      <!--====================== Password =================== -->
+      <app-custom-input 
+      icon="lock-closed-outline"
+      [control]="form.controls.password"
+      type="password"
+      label="Contraseña"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.email.touched" >
+        <div *ngIf="form.controls.passwordrrors?.['required']" >La contraseña es requerido</div>
+       
+      </div>
+      
 
-    <ion-item >
-      <ion-input labelPlacement="floating" label="Contraseña" type="password" name="password" [(ngModel)]="usuario.password" required></ion-input>
-    </ion-item>
+      <ion-button  class="submit" expand="block"  shape="round" type="submit" [disabled]="form.invalid">
+        Registrar
+      </ion-button>
+    </form>
 
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
-      </ion-col>      
-    </ion-row>
-
-  </form>
+  </div>
+  
+  
 </ion-content>

@@ -1,8 +1,9 @@
-import { Component, ElementRef, ViewChildren, ViewChild} from '@angular/core';
-import type { QueryList } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import type { Animation } from '@ionic/angular';
-import { AnimationController, IonCard } from '@ionic/angular';
+import { Component, ElementRef, ViewChildren, ViewChild, inject} from '@angular/core';
+
+import { UtilsService } from '../services/utils.service';
+import { FirebaseService } from '../services/firebase.service';
+import { AddUpdateProductComponent } from '../shared/components/add-update-product/add-update-product.component';
+
 
 @Component({
   selector: 'app-home',
@@ -11,43 +12,54 @@ import { AnimationController, IonCard } from '@ionic/angular';
 })
 export class HomePage {
 
-  mensaje: string = "";
-  @ViewChild(IonCard, { read: ElementRef })
-  card!: ElementRef<HTMLIonCardElement>;
+  
+  firebaseSvc = inject(FirebaseService);
+  utilSvc = inject (UtilsService);
 
-  private animation!: Animation;
+
+  ngOnInit() {
+  }
+     signOut(){
+       this.firebaseSvc.signOut();
+     }
+  addUpdateProduct(){
+    this.utilSvc.presentModal({
+      component: AddUpdateProductComponent
+    })
+  } 
+  // mensaje: string = "";
+  // @ViewChild(IonCard, { read: ElementRef })
+  // card!: ElementRef<HTMLIonCardElement>;
+
+  // private animation!: Animation;
 
   
 
-  constructor(private animationCtrl: AnimationController, private rutaActiva: ActivatedRoute) {
+  // constructor(private animationCtrl: AnimationController, private rutaActiva: ActivatedRoute) {
 
-    this.rutaActiva.queryParams.subscribe(params =>{
-      if(params['nombreUsuario']){
-        this.mensaje = params['nombreUsuario'];
-      }
-    })
-  }
+    
+  // }
 
-  ngAfterViewInit() {
-    this.animation = this.animationCtrl
-      .create()
-      .addElement(this.card.nativeElement)
-      .duration(1500)
-      .iterations(Infinity)
-      .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
-      .fromTo('opacity', '1', '0.2');
-  }
+  // ngAfterViewInit() {
+  //   this.animation = this.animationCtrl
+  //     .create()
+  //     .addElement(this.card.nativeElement)
+  //     .duration(1500)
+  //     .iterations(Infinity)
+  //     .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+  //     .fromTo('opacity', '1', '0.2');
+  // }
 
-  play() {
-    this.animation.play();
-  }
+  // play() {
+  //   this.animation.play();
+  // }
 
-  pause() {
-    this.animation.pause();
-  }
+  // pause() {
+  //   this.animation.pause();
+  // }
 
-  stop() {
-    this.animation.stop();
-  }
+  // stop() {
+  //   this.animation.stop();
+  // }
 
 }

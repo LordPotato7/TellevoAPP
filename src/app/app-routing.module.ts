@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NoAuthGuard } from './guards/no-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,12 +10,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'homeuser',
     pathMatch: 'full'
   },
   {
     path: 'login',
-    loadChildren: () => import('./user/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./user/login/login.module').then( m => m.LoginPageModule),
   },
   {
     path: 'register',
@@ -24,7 +26,7 @@ const routes: Routes = [
     loadChildren: () => import('./user/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
   },
   {
-    path: 'home-user',
+    path: 'homeuser',
     loadChildren: () => import('./user/home-user/home-user.module').then( m => m.HomeUserPageModule)
   },
   {

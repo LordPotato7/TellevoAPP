@@ -6,22 +6,41 @@
     <ion-title class="ion-text-center">Log In</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content>
+  <div class="d-flex-center">
+    <form [formGroup]="form" (ngSubmit)="submit()" >
 
-  <h3>Iniciar Sesión</h3>
-  <form #miFormulario="ngForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-input labelPlacement="floating" label="Nombre" required type="text" aria-label="Email" name="text" [(ngModel)]="usuario.email" ></ion-input>
-    </ion-item>
-    <ion-item>
-     
-      <ion-input labelPlacement="floating" label="Password" required type="password" aria-label="password" name="password" [(ngModel)]="usuario.password" ></ion-input>
-    </ion-item>
-   <!--  <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
-      Login
-    </ion-button> -->
-    <ion-button expand="full" color="primary" type="submit" class="ion-padding" [disabled]="miFormulario.invalid">
-      Login
-    </ion-button>
-  </form>
+      <app-custom-input 
+      icon="mail-outline"
+      autocomplete="autocomplete"
+      [control]="form.controls.email"
+      type="email"
+      label="Correo"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched" >
+        <div *ngIf="form.controls.email.errors?.['required']" >El correo es requerido</div>
+        <div *ngIf="form.controls.email.errors?.['email']" >ingrese un correo valido</div>
+      </div>
+  
+      <app-custom-input 
+      icon="lock-closed-outline"
+      [control]="form.controls.password"
+      type="password"
+      label="Contraseña"
+      ></app-custom-input>
+      
+      <div class="validators" *ngIf="form.controls.password.errors && form.controls.email.touched" >
+        <div *ngIf="form.controls.passwordrrors?.['required']" >La contraseña es requerido</div>
+       
+      </div>
+
+      <ion-button  class="submit" expand="block"  shape="round" type="submit" [disabled]="form.invalid">
+        Ingresar
+      </ion-button>
+    </form>
+
+  </div>
+  
+  
 </ion-content>
